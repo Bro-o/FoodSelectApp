@@ -1,20 +1,21 @@
 ﻿<!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>What Food?</title>
-    <meta name="description" content="What Food?" />
-    <meta name="keywords" content="sliding menu, pushing menu, navigation, responsive, menu, css, jquery" />
-    <meta name="author" content="Codrops" />
-    <link rel="shortcut icon" href="../favicon.ico">
+    <!--<title>What Food?</title>-->
+    <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/component.css" />
     <link rel="stylesheet" href="css/change.css" />
+    <!--change main  병합-->
     <link rel="stylesheet" href="css/button.css" />
     <script src="js/modernizr.custom.js"></script>
-    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+
+    <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 </head>
+
 <body>
     <nav class="menu menu-vertical menu-right" id="menu">
         <div id="sideGrid">
@@ -55,18 +56,18 @@
                 </button>
             </div>
             <div id="cart" class="cart">
-                <div class="cart-item">
-                  <img src="../FoodSelectApp/picture/1.jpg" class="cart-image" id="item-image"/>
-
-                  <button id="cart-item-remove" class="cart-item-remove"></button>
-                </div>
+                <!--<button id="cart-item-remove" class="cart-item-remove"></button>-->
+                <!--<div class="cart-item">
+        <img src="../FoodSelectApp/picture/1.jpg" class="cart-image" id="item-image" />
+        <button id="cart-item-remove" class="cart-item-remove"></button>
+    </div>-->
                 <div id="end"></div>
             </div>
         </div>
     </nav>
     <div id="grid">
         <div class="nav">
-            <button id="prev" type="button" class="prev">
+            <button id="prev" type="button" class="prev"><!--prev button-->
                 <svg xmlns="http://www.w3.org/2000/svg"
                      class="icon icon-tabler icon-tabler-arrow-narrow-left"
                      width="44"
@@ -83,7 +84,7 @@
                     <line x1="5" y1="12" x2="9" y2="8" />
                 </svg>
             </button>
-            <button id="home" type="button" class="home">
+            <button id="home" type="button" class="home"><!--menu button-->
                 <svg xmlns="http://www.w3.org/2000/svg"
                      class="icon icon-tabler icon-tabler-menu-2"
                      width="44"
@@ -132,51 +133,55 @@
             show = document.getElementById('home'),
             disable = document.getElementById('diasble');
 
-        show.addEventListener("click", function(){
-          menu.classList.toggle("menu-open");
+        show.addEventListener("click", function() {
+            menu.classList.toggle("menu-open");
         })
-        disable.onclick = function () {
-          classie.toggle(menu, 'menu-open');
+        disable.onclick = function() {
+            classie.toggle(menu, 'menu-open');
         };
     </script>
+    <!--Selected menu-->
     <script>
         const cartBtn = document.querySelectorAll('.cart-button');
-        const removeBtn = document.getElementById('cart-item-remove');
+        var removeBtnArr = [];
 
-        cartBtn.forEach(function(btn){
-            btn.addEventListener('click',function(event){
-              //console.log(event.target);
+        cartBtn.forEach(function(btn) {
+            btn.addEventListener('click', function(event) {
+                //console.log(event.target);
 
-                if(event.target.parentElement.classList.contains("cart-button")){
-                  let fullpath = document.getElementById("img").src;
-                  let pos = fullpath.indexOf("picture") + 7;
-                  let partPath = fullpath.slice(pos);
-                  console.log(partPath);
+                if (event.target.parentElement.classList.contains("cart-button")) {
+                    let fullpath = document.getElementById("img").src;
+                    let pos = fullpath.indexOf("picture") + 7;
+                    let partPath = fullpath.slice(pos);
+                    var partNum = partPath.split('.')
+                    console.log(partPath);
 
-                  const item = {};
-                  item.img = "../FoodSelectApp/picture" + partPath;
-                  console.log(item);
+                    const item = {};
+                    item.img = "../FoodSelectApp/picture" + partPath;
+                    console.log(item);
 
-                  const cartItem = document.createElement('div');
-                  cartItem.classList.add("cart-item");
+                    const cartItem = document.createElement('div');
+                    cartItem.classList.add("cart-item" + partNum[0]);
+                    cartItem.setAttribute('id', 'cart-item' + partNum[0]);
 
-                  cartItem.innerHTML = '<img src=' + item.img + ' class="cart-image" id="item-image"/> <button id="cart-item-remove" class="cart-item-remove"></button>';
+                    cartItem.innerHTML = '<img src=' + item.img + ' class="cart-image" id="item-image"/> <button id="cart-item-remove' + partNum[0] + '" class="cart-item-remove" onClick="remove()"></button>';
 
-                  //select cart
-                  const cart = document.getElementById("cart");
-                  const end = document.getElementById("end");
+                    //select cart
+                    const cart = document.getElementById("cart");
+                    const end = document.getElementById("end");
 
-                  cart.insertBefore(cartItem,end);
-                  alert("Hi");
+                    cart.insertBefore(cartItem, end);
+                    //alert("Hi");
                 }
-              });
+            });
         });
 
-        function remove(){
-          console.log(event.target.parentElement);
+        function remove() {
+            var btnID = event.srcElement.id;
+            var partNum = btnID.split('/');
+            var cart = document.getElementById("cart-item/" + partNum[1]);
+            cart.remove(cart)
         }
-        removeBtn.addEventListener('click',remove);
-        
     </script>
 </body>
 <!-- Copyright (c) 2020 by ahmed beheiry (https://codepen.io/ahmedbeheiry/pen/qNPoyJ)
@@ -202,11 +207,12 @@ Our design freebies can be used in personal or commercial projects with the exce
 
 You are free to copy excerpts of our articles but please don��t republish entire articles. If you��d like to translate single articles, please contact us.
  -->
+
 </html>
 
 <script>
     var chButton = document.getElementById('change');
-	var prevButton = document.getElementById('prev');
+    var prevButton = document.getElementById('prev');
     var tmp = location.href.split('?');
     var codeNum = String(tmp[1]);
 
@@ -221,9 +227,10 @@ You are free to copy excerpts of our articles but please don��t republish en
         }
         document.getElementById('img').src = '../FoodSelectApp/picture/' + picCode + '.png';
     }
-	function prevPage() {
-		location = 'checkBox.html'
-	}
+
+    function prevPage() {
+        location = 'checkBox.html'
+    }
     chButton.addEventListener('click', chaneMenu);
-	prevButton.addEventListener('click', prevPage);
+    prevButton.addEventListener('click', prevPage);
 </script>
