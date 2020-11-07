@@ -87,4 +87,19 @@
 		margin:40px;
 		margin-right:0;
 	}
+
+	.cart-item {
+		position: relative;
+	}
+
+	.item-image{
+		position: absolute;
+	}
+
+	.cart-item-remove{
+		position: absolute;
+		right: 10px;
+
+	}
+
 }
