@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/component.css" />
     <link rel="stylesheet" href="css/change.css" />
-    <!--change main  병합-->
     <link rel="stylesheet" href="css/button.css" />
     <script src="js/modernizr.custom.js"></script>
 
@@ -56,11 +55,11 @@
                 </button>
             </div>
             <div id="cart" class="cart">
-                <!--<button id="cart-item-remove" class="cart-item-remove"></button>-->
-                <!--<div class="cart-item">
-        <img src="../FoodSelectApp/picture/1.jpg" class="cart-image" id="item-image" />
-        <button id="cart-item-remove" class="cart-item-remove"></button>
-    </div>-->
+                <!--<button id="cart-item-remove" class="cart-item-remove"></button>
+                <div class="cart-item">
+                    <img src="../FoodSelectApp/picture/1.jpg" class="cart-image" id="item-image" />
+                    <button id="cart-item-remove" class="cart-item-remove"></button>
+                </div>-->
                 <div id="end"></div>
             </div>
         </div>
@@ -148,12 +147,11 @@
         cartBtn.forEach(function(btn) {
             btn.addEventListener('click', function(event) {
                 //console.log(event.target);
-
                 if (event.target.parentElement.classList.contains("cart-button")) {
                     let fullpath = document.getElementById("img").src;
                     let pos = fullpath.indexOf("picture") + 7;
                     let partPath = fullpath.slice(pos);
-                    var partNum = partPath.split('.')
+                    var partNum = partPath.split('.');
                     console.log(partPath);
 
                     const item = {};
@@ -161,7 +159,7 @@
                     console.log(item);
 
                     const cartItem = document.createElement('div');
-                    cartItem.classList.add("cart-item" + partNum[0]);
+                    cartItem.classList.add("cart-item");
                     cartItem.setAttribute('id', 'cart-item' + partNum[0]);
 
                     cartItem.innerHTML = '<img src=' + item.img + ' class="cart-image" id="item-image"/> <button id="cart-item-remove' + partNum[0] + '" class="cart-item-remove" onClick="remove()"></button>';
