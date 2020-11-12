@@ -60,7 +60,11 @@
                     <img src="../FoodSelectApp/picture/1.jpg" class="cart-image" id="item-image" />
                     <button id="cart-item-remove" class="cart-item-remove"></button>
                 </div>-->
-                <div id="end"></div>
+                <div id="end"><!-- 나중에 확장자 php로 수정해야함-->
+                    <form action="basket.html" id="form_direction_start" method="POST">
+                        <div id="form_direction_end"></div>
+                    </form>
+                </div>
             </div>
         </div>
     </nav>
@@ -153,14 +157,20 @@
                     let partPath = fullpath.slice(pos);
                     var partNum = partPath.split('.');
                     console.log(partPath);
+                    let instant=partPath;
 
                     const item = {};
                     item.img = "../FoodSelectApp/picture" + partPath;
                     console.log(item);
 
                     const cartItem = document.createElement('div');
+                    const sendItem = document.createElement('input');
                     cartItem.classList.add("cart-item");
+                    sendItem.classList.add("send-item");
                     cartItem.setAttribute('id', 'cart-item' + partNum[0]);
+                    sendItem.setAttribute('name',"send[]");
+                    sendItem.setAttribute('value',instant);
+                    sendItem.setAttribute('type',"hidden");
 
                     cartItem.innerHTML = '<img src=' + item.img + ' class="cart-image" id="item-image"/> <button id="cart-item-remove' + partNum[0] + '" class="cart-item-remove" onClick="remove()"> <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-square-x" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#E43B3C" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><rect x="4" y="4" width="16" height="16" rx="2" /><path d="M10 10l4 4m0 -4l-4 4" /></svg></button>';
 
@@ -169,6 +179,12 @@
                     const end = document.getElementById("end");
 
                     cart.insertBefore(cartItem, end);
+
+                    //select form
+                    const send_point_start=document.getElementById("form_direction_start");
+                    const send_point_end= document.getElementById("form_direction");
+                    
+                    send_point_start.insertBefore(sendItem,send_point_end);
                     //alert("Hi");
                 }
             });
@@ -179,6 +195,10 @@
             var partNum = btnID.split('/');
             var cart = document.getElementById("cart-item/" + partNum[1]);
             cart.remove(cart)
+        }
+        function send(){
+            go=document.getElementById("form_direction_start");
+            go.submit();
         }
     </script>
 </body>
@@ -211,6 +231,8 @@ You are free to copy excerpts of our articles but please don��t republish en
 <script>
     var chButton = document.getElementById('change');
     var prevButton = document.getElementById('prev');
+    var basketButton = document.getElementById('basket');
+
     var tmp = location.href.split('?');
     var codeNum = String(tmp[1]);
 
@@ -229,6 +251,11 @@ You are free to copy excerpts of our articles but please don��t republish en
     function prevPage() {
         location = 'checkBox.html'
     }
+    function basketPage(){
+        location = 'basket.html'
+        send();
+    }
     chButton.addEventListener('click', chaneMenu);
     prevButton.addEventListener('click', prevPage);
+    basketButton.addEventListener('click', basketPage);
 </script>
