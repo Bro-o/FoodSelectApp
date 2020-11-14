@@ -9,6 +9,31 @@
           rel="stylesheet" />
 </head>
 <body>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-analytics.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        var firebaseConfig = {
+            apiKey: "AIzaSyDktxOfGtDkwoie_jZbsqZlUbUZJqArK7Y",
+            authDomain: "food-e0bbf.firebaseapp.com",
+            databaseURL: "https://food-e0bbf.firebaseio.com",
+            projectId: "food-e0bbf",
+            storageBucket: "food-e0bbf.appspot.com",
+            messagingSenderId: "893921199090",
+            appId: "1:893921199090:web:b7785eb7de14a353c7a16b",
+            measurementId: "G-VQ4JL20NDF"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+    </script>
+
     <div id="grid">
         <div class="nav">
             <button id="home" type="button" class="home">
@@ -33,33 +58,31 @@
             <ul>
                 <li>
                     <input type="checkbox" id="select0" class="checkbox" />
-                    <label class="input-label checkbox" for="select0"><img src="../FoodSelectApp/picture/Carrot_icon-icons.com_68773.jpg" />한식</label>
+                    <label class="input-label checkbox" for="select0"><img src="../picture/Carrot_icon-icons.com_68773.jpg" />한식</label>
                 </li>
                 <li>
                     <input type="checkbox" id="select1" class="checkbox" />
-                    <label class="input-label checkbox" for="select1"><img src="../FoodSelectApp/picture/Carrot_icon-icons.com_68773.jpg" />분식</label>
+                    <label class="input-label checkbox" for="select1"><img src="../picture/Carrot_icon-icons.com_68773.jpg" />분식</label>
                 </li>
                 <li>
                     <input type="checkbox" id="select2" class="checkbox" />
-                    <label class="input-label checkbox" for="select2"><img src="../FoodSelectApp/picture/Carrot_icon-icons.com_68773.jpg" />중식</label>
+                    <label class="input-label checkbox" for="select2"><img src="../picture/Carrot_icon-icons.com_68773.jpg" />중식</label>
                 </li>
                 <li>
                     <input type="checkbox" id="select3" class="checkbox" />
-                    <label class="input-label checkbox" for="select3"><img src="../FoodSelectApp/picture/Carrot_icon-icons.com_68773.jpg" />일식</label>
+                    <label class="input-label checkbox" for="select3"><img src="../picture/Carrot_icon-icons.com_68773.jpg" />일식</label>
                 </li>
                 <li>
                     <input type="checkbox" id="select4" class="checkbox" />
-                    <label class="input-label checkbox" for="select4"><img src="../FoodSelectApp/picture/Carrot_icon-icons.com_68773.jpg" />양식</label>
+                    <label class="input-label checkbox" for="select4"><img src="../picture/Carrot_icon-icons.com_68773.jpg" />양식</label>
 
                 </li>
             </ul>
         </div>
         <div class="next">
-            <ul>
-                <button id="next" type="button" class="btn btn-primary btn-lg outline">
-                    Next
-                </button>
-            </ul>
+            <button id="next" type="button" class="btn btn-primary btn-lg outline">
+                Next
+            </button>
         </div>
     </div>
 </body>
@@ -75,30 +98,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
  -->
 </html>
 
-<!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-app.js"></script>
 
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-<script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-analytics.js"></script>
-
-<script>
-    // Your web app's Firebase configuration
-    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-    var firebaseConfig = {
-        apiKey: "AIzaSyDktxOfGtDkwoie_jZbsqZlUbUZJqArK7Y",
-        authDomain: "food-e0bbf.firebaseapp.com",
-        databaseURL: "https://food-e0bbf.firebaseio.com",
-        projectId: "food-e0bbf",
-        storageBucket: "food-e0bbf.appspot.com",
-        messagingSenderId: "893921199090",
-        appId: "1:893921199090:web:b7785eb7de14a353c7a16b",
-        measurementId: "G-VQ4JL20NDF"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-    firebase.analytics();
-</script>
 
 <script>
     var nextButton = document.getElementById('next');
