@@ -111,7 +111,7 @@
         <div class="foot">
             <button id="change" class="btn btn-primary btn-lg outline">Change</button>
             <button type="button" class="cart-button">
-                <img src="../FoodSelectApp/public/picture/cart.PNG"/>
+                <img src="../public/picture/cart.PNG"/>
             </button>
         </div>
     </div>
@@ -158,7 +158,7 @@
                     sendItem.setAttribute('value',instant);
                     sendItem.setAttribute('type',"hidden");
 
-                    cartItem.innerHTML = '<img src=' + item.img + ' class="cart-image" id="item-image"/> <button  class="cart-item-remove" onClick="remove()"> <img id="cart-item-remove' + partNum[0] + '" src="../FoodSelectApp/public/picture/remove.PNG"/></button>';
+                    cartItem.innerHTML = '<img src=' + item.img + ' class="cart-image" id="item-image"/> <button  class="cart-item-remove" onClick="remove()"> <img id="cart-item-remove' + partNum[0] + '" src="../public/picture/remove.PNG"/></button>';
 
                     //select cart
                     const cart = document.getElementById("cart");
